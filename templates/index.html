@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Learning Story Generator</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <h1>📖 Learning Story Generator</h1>
+    <p>Turn any topic into a short story that fits the student's reading level.</p>
+  </header>
+
+  <main>
+    <section class="card" id="form-card">
+      <form id="story-form">
+        <label>Topic *
+          <input id="topic" required maxlength="200" placeholder="e.g. fractions, water cycle, gravity">
+        </label>
+        <label>Reading level
+          <select id="level"></select>
+        </label>
+        <label>Learning goal (optional)
+          <textarea id="goal" rows="2" maxlength="300" placeholder="e.g. explain evaporation and rain"></textarea>
+        </label>
+        <div class="row">
+          <label>Student name (optional)<input id="name" maxlength="40"></label>
+          <label>Interest (optional)<input id="interest" maxlength="80" placeholder="e.g. cricket"></label>
+        </div>
+        <label>Language
+          <select id="language">
+            <option>English</option><option>Hindi</option><option>Telugu</option>
+            <option>Tamil</option><option>Spanish</option>
+          </select>
+        </label>
+        <button type="submit" id="generate-btn">Generate story</button>
+      </form>
+      <p id="error" class="error" hidden></p>
+    </section>
+
+    <section class="card" id="result" hidden>
+      <h2 id="r-title"></h2>
+      <div id="r-story"></div>
+      <div class="key"><strong>Key idea:</strong> <span id="r-key"></span></div>
+      <h3>Check your understanding</h3>
+      <ol id="r-questions"></ol>
+      <p class="meta" id="r-meta"></p>
+      <p class="warn" id="r-warn" hidden></p>
+      <div class="actions">
+        <button id="save-btn" class="secondary">💾 Save</button>
+        <button id="download-btn" class="secondary">⬇ Download .txt</button>
+        <button id="print-btn" class="secondary">🖨 Print</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Saved stories</h2>
+      <ul id="saved-list"><li class="muted">Nothing saved yet.</li></ul>
+    </section>
+  </main>
+
+  <footer>AI can make mistakes. A teacher should review stories before classroom use.</footer>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
